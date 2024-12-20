@@ -1,5 +1,4 @@
-const levelup = require('levelup')
-const memdown = require('memdown')
+const { MemoryLevel } = require('memory-level')
 
 const { always: K, bind, flip, merge } = require('ramda')
 
@@ -8,7 +7,7 @@ const { promisify } = require('./util')
 const patchWith = flip(merge)
 
 module.exports = name => {
-  const db = levelup(name, { db: memdown, valueEncoding: 'json' })
+  const db = new MemoryLevel({ valueEncoding: 'json' })
 
   const delPromise = promisify(db.del, db)
   const putPromise = promisify(db.put, db)

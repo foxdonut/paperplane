@@ -10,7 +10,7 @@ const routes = require('./routes')
 
 const port = process.env.PORT || 3000
 
-const listening = err => err ? console.error(err) : console.info(`Listing on port: ${port}`)
+const listening = err => err ? console.error(err) : console.info(`Listening on port: ${port}`)
 
 const app = composeP(routes, parseJson)
 
